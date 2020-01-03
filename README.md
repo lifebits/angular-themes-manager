@@ -1,1 +1,1 @@
-Information file
+Information file (test commit)
