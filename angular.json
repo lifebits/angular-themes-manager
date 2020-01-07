@@ -23,12 +23,23 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
+            "extractCss": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "src/assets/themes/theme-default.scss",
+                "lazy": true,
+                "bundleName": "theme-default"
+              },
+              {
+                "input": "src/assets/themes/theme-blue.scss",
+                "lazy": true,
+                "bundleName": "theme-blue"
+              }
             ],
             "scripts": []
           },
