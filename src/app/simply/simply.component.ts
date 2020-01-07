@@ -10,9 +10,7 @@ import { ThemeService } from '../app.themes.manager';
 })
 export class SimplyComponent implements OnInit {
 
-  mainTheme$ = this.themeManager.theme$.pipe(
-    tap(value => console.log(value))
-  );
+  mainThemes$ = this.themeManager.getActiveThemes();
 
   constructor(
     private themeManager: ThemeService) {

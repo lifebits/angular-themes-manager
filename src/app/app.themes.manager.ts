@@ -1,6 +1,7 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,12 @@ export class ThemeService {
     if (this.themeLinks.length === 2) {
       this._renderer.removeChild(this.head, this.themeLinks.shift());
     }
+  }
+
+  getActiveThemes(): Observable<[ string, string ]> {
+    return this.theme$.pipe(
+      map(([ mainTheme, darkMode ]) => [ mainTheme, (darkMode) ? 'isDark' : 'noDark' ])
+    );
   }
 
   loadCssFile(filename: string): Promise<void> {
