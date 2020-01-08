@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ThemeService {
+export class ThemesService {
 
   private sourceMainTheme: BehaviorSubject<string> = new BehaviorSubject('theme-default');
   private sourceIsDarkMode: BehaviorSubject<boolean> = new BehaviorSubject(false);
@@ -25,15 +25,11 @@ export class ThemeService {
 
   constructor(
     private rendererFactory: RendererFactory2){
-
-    console.log('HEAD', this.head);
   }
 
   setMainTheme(themeName: string): void {
     this.sourceMainTheme.next(themeName);
-    if (this.themeLinks.length === 2) {
-      this._renderer.removeChild(this.head, this.themeLinks.shift());
-    }
+    this.clearUnusedTheme();
   }
 
   getActiveThemes(): Observable<[ string, string ]> {
@@ -52,6 +48,12 @@ export class ThemeService {
       this._renderer.appendChild(this.head, linkEl);
       this.themeLinks = [ ...this.themeLinks, linkEl ];
     })
+  }
+
+  private clearUnusedTheme(): void {
+    if (this.themeLinks.length === 2) {
+      this._renderer.removeChild(this.head, this.themeLinks.shift());
+    }
   }
 
 }

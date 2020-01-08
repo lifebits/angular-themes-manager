@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 
-import { ThemeService } from './app.themes.manager';
+import { ThemesService } from './app.themes.service';
 
 @Component({
   selector: 'app-root',
@@ -15,23 +15,22 @@ export class AppComponent implements OnInit{
   currentTheme?: string;
 
   constructor(
-    private themeManager: ThemeService) {
+    private themesManager: ThemesService) {
   }
 
   ngOnInit(): void {
-    this.themeManager.theme$
+    this.themesManager.theme$
       .pipe(
         tap( ([ theme, isDark ]) => this.currentTheme = theme ),
-        map(([ theme, isDark ]) => ThemeService.getCssFileName([ theme, isDark ]))
+        map(([ theme, isDark ]) => ThemesService.getCssFileName([ theme, isDark ]))
       )
       .subscribe((filename) => {
-      console.log(filename);
-      this.themeManager.loadCssFile(filename)
+      this.themesManager.loadCssFile(filename)
     });
   }
 
   setTheme(themeName: string) {
-    this.themeManager.setMainTheme(themeName);
+    this.themesManager.setMainTheme(themeName);
   }
 
 }

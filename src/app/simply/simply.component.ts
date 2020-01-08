@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { tap } from 'rxjs/operators';
 
-import { ThemeService } from '../app.themes.manager';
+import { ThemesService } from '../app.themes.service';
 
 @Component({
   selector: 'app-simply',
@@ -10,10 +9,10 @@ import { ThemeService } from '../app.themes.manager';
 })
 export class SimplyComponent implements OnInit {
 
-  mainThemes$ = this.themeManager.getActiveThemes();
+  mainThemes$ = this.themesManager.getActiveThemes();
 
   constructor(
-    private themeManager: ThemeService) {
+    private themesManager: ThemesService) {
   }
 
   ngOnInit() {}
