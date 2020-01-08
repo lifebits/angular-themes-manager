@@ -1,5 +1,9 @@
+:root {
+  --main-color: black;
+}
+
 .theme-default {
   p {
-    color: black;
+    color: var(--main-color);
   }
 }

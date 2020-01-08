@@ -1,5 +1,9 @@
+:root {
+  --main-color: blue;
+}
+
 .theme-blue {
   p {
-    color: blue;
+    color: var(--main-color);
   }
 }
