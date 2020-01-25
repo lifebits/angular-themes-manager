@@ -1,7 +1,8 @@
 <section [ngClass]="[ currentTheme, 'app-container' ]">
-  <p>Some cool text</p>
-  <button (click)="setTheme('theme-default')">Set default theme</button>
-  <button (click)="setTheme('theme-blue')">Set blue theme</button>
+  <h1>Some cool text</h1>
+
+  <button class="button-large" (click)="setTheme('theme-default')">Set default theme</button>
+  <button class="button-large" (click)="setTheme('theme-blue')">Set blue theme</button>
 
   <app-simply></app-simply>
 </section>

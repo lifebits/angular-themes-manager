@@ -44,7 +44,7 @@ export class ThemesService {
       this._renderer.setAttribute(linkEl, 'rel', 'stylesheet');
       this._renderer.setAttribute(linkEl, 'type', 'text/css');
       this._renderer.setAttribute(linkEl, 'href', filename);
-      this._renderer.setProperty(linkEl, 'onload', resolve);
+      this._renderer.setAttribute(linkEl, 'onload', 'loadCss()');
       this._renderer.appendChild(this.head, linkEl);
       this.themeLinks = [ ...this.themeLinks, linkEl ];
     })
