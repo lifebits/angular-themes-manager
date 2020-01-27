@@ -3,4 +3,7 @@
   height: var(--button-large-height);
   margin: 0 10px;
   font-size: 1rem;
+  background-color: var(--button-large-background);
+  color: var(--button-large-font-color);
+  border-radius: var(--button-border-raduis);
 }
